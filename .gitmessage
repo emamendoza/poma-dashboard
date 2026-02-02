@@ -1,0 +1,47 @@
+<tipo>(<alcance>): <resumen corto en imperativo>
+# 📋 Ejemplo: feat(auth): agregar validación de dos factores
+# ----------------------------------------------------------------------
+# ⚠️ REGLAS:
+# 1. El resumen no debe superar los 50 caracteres.
+# 2. No finalizar el resumen con punto final.
+# 3. Usa el imperativo: "agregar" en vez de "agregué" o "agrega".
+# ----------------------------------------------------------------------
+
+# --- GUÍA DE TIPOS ---
+# 🚀 feat:     Nueva funcionalidad (corresponde a MINOR en semver)
+# 🛠 fix:      Corrección de un error (corresponde a PATCH en semver)
+# ⚡ perf:     Mejora de rendimiento
+# ♻️ refactor: Cambio de código que no corrige error ni añade función
+# 🎨 style:    Cambios de formato (espacios, puntos y coma, etc.)
+# 🧪 test:     Añadir o corregir pruebas
+# 📝 docs:     Cambios en documentación
+# 🏗 build:    Cambios en sistema de construcción o dependencias (npm, webpack)
+# 🤖 ci:       Cambios en configuración de CI (GitHub Actions, Travis)
+# 🧹 chore:    Tareas de mantenimiento (sin cambios en código/test)
+# ⏪ revert:   Revertir un commit anterior
+# ---------------------
+
+# --- GUÍA DE SCOPE ---
+# Es en el modulo en donde se realiza el cambio por ejemplo modulo de usuario,
+# venteas, etc... 
+# 
+# Modulos especiales:
+# - ui: componentes genericos compartido con todos los modulos
+# - share/libs: utilidades genericas
+# - package: configuraciones de paqueterias (dependencias, versiones, etc..)
+# - containers: configuracion de contenedores
+# - ide: configuraciones del entorno de ide (vscode)
+# - env: configuraciones de variables de entorno
+# ---------------------
+
+
+# --- CUERPO / EXPLICACIÓN DETALLADA (Opcional) ---
+# Describe el "por qué" del cambio y el "cómo" (si no es obvio).
+# Intenta mantener las líneas a un máximo de 72 caracteres.
+
+
+# --- FOOTER / REFERENCIAS ---
+# Para cerrar issues automáticamente usa: Closes #123, Fixes #456, Resolves #789
+# Para solo referenciar: Re: #123 o See also: #456
+# Si hay un cambio importante (BREAKING CHANGE), descríbelo aquí:
+# BREAKING CHANGE: <descripción del cambio que rompe la compatibilidad>
