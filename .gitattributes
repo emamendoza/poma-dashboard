@@ -1,0 +1,37 @@
+# Handle line endings automatically for files detected as text
+# and leave files detected as binary untouched.
+* text=auto
+
+# Code files: force LF (Linux/Mac standard)
+# This prevents Windows users from accidentally converting everything to CRLF
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Shell scripts: force LF
+# Scripts will fail on Linux/Mac if they have CRLF
+*.sh text eol=lf
+
+# Windows batch files: force CRLF
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Binary files: verify they are treated as binary (no line ending conversion)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.webp binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
