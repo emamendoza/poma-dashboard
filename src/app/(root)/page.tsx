@@ -1,12 +1,12 @@
 
 import { Button } from "@/ui/components/button";
-import Hero from "./_components/hero";
+import Hero from "../_components/hero";
 
 export default function Home() {
 
   return (
-    <div className="flex flex-col min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <Hero />
+    <div className="flex flex-col min-h-screen items-center justify-center">
+
       <main>
         <Button>Hola mundo</Button>
       </main>

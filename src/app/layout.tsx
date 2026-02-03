@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "../globals.css";
+import "./_statics/globals.css";
 import { ThemeProvider } from "./_components/theme-provider";
+import Hero from "./_components/hero";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
         enableSystem
         disableTransitionOnChange
       >
+          <Hero />
           {children}
         </ThemeProvider>
       </body>
