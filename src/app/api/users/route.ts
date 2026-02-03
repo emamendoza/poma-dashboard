@@ -1,23 +1,23 @@
+import { createUser, getUsers } from '@/users/services';
 import { NextResponse } from 'next/server';
 
-let users = [
-    { id: 1, name: 'Juan Perez', email: 'juan@example.com' },
-    { id: 2, name: 'Maria Garcia', email: 'maria@example.com' },
-];
-
+/**
+ * Obtiene la lista de usuarios.
+ * Para ver el resultado en el navegador, acceda a la URL: `http://localhost:3000/api/users`
+ * 
+ * @returns Una respuesta JSON con la lista de usuarios.
+ */
 export async function GET() {
-    return NextResponse.json(users);
+    return NextResponse.json(getUsers());
 }
 
 export async function POST(request: Request) {
     try {
-        const body = await request.json();
-        const newUser = {
-            id: users.length + 1,
-            ...body,
-        };
-        users.push(newUser);
+        const user = await request.json();
+        const newUser = createUser(user);
+
         return NextResponse.json(newUser, { status: 201 });
+
     } catch (error) {
         return NextResponse.json({ error: 'Error al crear usuario' }, { status: 400 });
     }
