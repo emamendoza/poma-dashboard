@@ -16,5 +16,5 @@
     "plaintext": "html"
   },
   "tailwindCSS.classFunctions": ["tw", "clsx", "tw\\.[a-z-]+"],
-  "cSpell.words": ["geist"]
+  "cSpell.words": ["geist", "unrs"]
 }
