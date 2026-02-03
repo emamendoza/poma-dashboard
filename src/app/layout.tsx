@@ -1,39 +1,29 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./_statics/globals.css";
+
+import type { Metadata } from "next";
+
+import { geistMono, geistSans } from "./_statics/fonts";
+
+import { Hero } from "./_components/hero";
 import { ThemeProvider } from "./_components/theme-provider";
-import Hero from "./_components/hero";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Poma",
   description: "Poma Business solutions",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+type Props = Readonly<{ children: React.ReactNode }>
+
+export default function RootLayout({ children }: Props) {
   return (
     <html lang="es-ar" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      ><ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Hero />
           {children}
         </ThemeProvider>
