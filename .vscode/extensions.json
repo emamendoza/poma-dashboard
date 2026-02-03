@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "biomejs.biome",
+    "streetsidesoftware.code-spell-checker-spanish",
+    "streetsidesoftware.code-spell-checker",
+    "google.geminicodeassist",
+    "bradlc.vscode-tailwindcss"
+  ]
+}
