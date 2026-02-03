@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 import { geistMono, geistSans } from "./_statics/fonts";
 
-import { Hero } from "./_components/hero";
+import { Header } from "./_components/header";
 import { ThemeProvider } from "./_components/theme-provider";
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export default function RootLayout({ children }: Props) {
           enableSystem
           disableTransitionOnChange
         >
-          <Hero />
+          <Header />
           {children}
         </ThemeProvider>
       </body>
