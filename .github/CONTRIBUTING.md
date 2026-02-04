@@ -8,19 +8,24 @@ Este proyecto utiliza **Bun** como entorno de ejecución (runtime) y gestor de p
 
 - [bun](https://bun.com/docs/installation)
 
-- git message: git config \--local commit.template .gitmessage
-
 ---
 
 **🚀 Pasos para empezar a desarrollar**
 
-1. **Instalar dependencias:**
+1. **Configurar git message:**
+
+   ```bash
+   git config --local commit.template .gitmessage
+   ```
+   
+2. **Instalar dependencias:**
+
    ```bash
    bun install
    ```
 
-2. **Crear una rama para tu trabajo:**
+3. **Cambiar una rama para tu trabajo:**
 
    ```bash
-   git checkout \-b feature/nombre-de-tu-mejora
+   git checkout nombre-de-tu-rama
    ```
