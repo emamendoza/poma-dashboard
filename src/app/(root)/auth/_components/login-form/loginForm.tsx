@@ -1,9 +1,9 @@
 "use client";
 import { Button } from "@/ui/components/button";
-import { loginSchema } from "@/ui/lib/validations/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { FormFieldAuth } from "./formFieldAuth";
+import { FormFieldAuth } from "../formFieldAuth";
+import { loginSchema } from "./loginSchema";
 
 export const LoginForm = () => {
   const {
@@ -19,11 +19,11 @@ export const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <FormFieldAuth
-        id="email"
-        label="Email"
-        type="email"
-        {...register("email")} // Registramos el campo
-        error={errors.email?.message as string} // Pasamos el error de Zod
+        id="username"
+        label="Usuario"
+        type="text"
+        {...register("username")}
+        error={errors.username?.message as string}
       />
 
       <FormFieldAuth
