@@ -15,7 +15,7 @@ Breve resumen de los cambios introducidos en este PR.
 ## 🧪 ¿Cómo se probó?
 - [ ] Tests unitarios pasados.
 - [ ] Verificado en navegador (Chrome/Firefox).
-- [ ] Probado en entorno local (pnpm dev).
+- [ ] Probado en entorno local (bun run dev).
 
 ## 📸 Capturas de pantalla (si aplica)
 | Antes | Después |
