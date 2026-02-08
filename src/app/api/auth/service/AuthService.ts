@@ -22,7 +22,7 @@ class AuthService implements IAuthService {
     const user = this.repo.findByUsernameAndPassword(username, password);
 
     if (!user) {
-      return { success: false, message: "Contraseña incorrecta" };
+      return { success: false, message: "Usuario o Contraseña incorrecta" };
     }
 
     const { id, username: loggedUsername } = user;

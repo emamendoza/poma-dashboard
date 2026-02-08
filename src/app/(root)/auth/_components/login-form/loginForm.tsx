@@ -1,4 +1,5 @@
 "use client";
+// biome-ignore assist/source/organizeImports: <explanation>
 import { Button } from "@/ui/components/button";
 import {
   Card,
@@ -11,32 +12,39 @@ import { Separator } from "@/ui/components/separator";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { FormFieldAuth } from "../formFieldAuth";
-import { loginSchema } from "./loginSchema";
+import { loginUser } from "./fetchData";
+import { type LoginFormValues, loginSchema } from "./loginSchema";
 
 export const LoginForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm({
+    formState: { errors, isSubmitting },
+  } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
+    defaultValues: {
+      username: "",
+      password: "",
+    },
   });
 
-  const onSubmit = (data: any) => console.log(data);
+  // success contiene el bolean del estado: true si fue exitoso el logueo, false si fracaso.
+  // Se puede usar la variable global para utilizarlo en el html del componente para mostrar los errores en el login
+
+  // Revisar la carpeta app/api/Auth/constants esta el arreglo con usuarios precargados para hacer las pruebas
+  const onSubmit = async (values: any) => {
+    console.log("Enviando al backend:", values);
+    const { data, error, success } = await loginUser(values);
+    if (error) {
+      alert("Oops: " + error + " estado" + success);
+      return;
+    }
+    console.log("Bienvenido:", data?.user.username);
+    console.log("success", success);
+  };
 
   return (
-    <Card
-      className="
-        w-full max-w-lg    
-        mx-auto                  
-        bg-black/80 backdrop-blur-md 
-        border border-white/20 
-        text-white 
-        shadow-xl 
-        rounded-xl
-        font-['Poiret_One',sans-serif]
-      "
-    >
+    <Card className="w-full max-w-lg mx-auto bg-black/80 backdrop-blur-md border border-white/20 text-white shadow-xl rounded-xl font-['Poiret_One',sans-serif]">
       <CardHeader className="space-y-1 text-center pb-5 sm:pb-6">
         <CardTitle className="text-2xl sm:text-3xl font-bold uppercase">
           Login
@@ -57,7 +65,7 @@ export const LoginForm = () => {
             type="text"
             placeholder="Usuario"
             {...register("username")}
-            error={errors.username?.message as string}
+            error={errors.username?.message}
           />
 
           <FormFieldAuth
@@ -66,7 +74,7 @@ export const LoginForm = () => {
             placeholder="*********"
             type="password"
             {...register("password")}
-            error={errors.password?.message as string}
+            error={errors.password?.message}
           />
 
           <div className="relative my-5 sm:my-6">
@@ -75,10 +83,11 @@ export const LoginForm = () => {
 
           <Button
             type="submit"
+            disabled={isSubmitting}
             className="w-full bg-white text-black hover:bg-white/90 text-base sm:text-lg font-bold"
             size="lg"
           >
-            Ingresar
+            {isSubmitting ? "Cargando..." : "Ingresar"}
           </Button>
         </form>
       </CardContent>
