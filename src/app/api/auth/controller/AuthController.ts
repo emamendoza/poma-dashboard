@@ -17,7 +17,10 @@ export class AuthController {
       const result = authService.login(username, password);
 
       if (!result.success) {
-        return NextResponse.json({ error: result.message }, { status: 401 });
+        return NextResponse.json(
+          { error: result.message, success: false },
+          { status: 401 },
+        );
       }
 
       return NextResponse.json(
