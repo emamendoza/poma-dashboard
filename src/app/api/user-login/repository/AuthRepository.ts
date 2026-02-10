@@ -1,22 +1,22 @@
 import { AuthList } from "../constants/AuthConstant";
-import type { Auth } from "../domain/Auth";
 import type { IAuthRepository } from "../domain/IAuthRepository";
+import type { UserLogin } from "../domain/user-login";
 
 class AuthRepository implements IAuthRepository {
-  private authList: Array<Auth> = [];
-  constructor(initialData: Array<Auth> = []) {
+  private authList: Array<UserLogin> = [];
+  constructor(initialData: Array<UserLogin> = []) {
     this.authList = initialData;
   }
-  findAll(): Array<Auth> {
+  findAll(): Array<UserLogin> {
     return this.authList;
   }
-  findByUsername(username: string): Auth | undefined {
+  findByUsername(username: string): UserLogin | undefined {
     return this.authList.find((auth) => auth.username === username);
   }
   findByUsernameAndPassword(
     username: string,
     password: string,
-  ): Auth | undefined {
+  ): UserLogin | undefined {
     return this.authList.find(
       (auth) => auth.username === username && auth.password === password,
     );
