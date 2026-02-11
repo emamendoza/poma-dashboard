@@ -1,6 +1,6 @@
+import { type ComponentPropsWithoutRef, forwardRef } from "react";
 import { Field, FieldLabel } from "@/ui/components/field";
 import { Input } from "@/ui/components/input";
-import { ComponentPropsWithoutRef, forwardRef } from "react";
 
 interface FormFieldAuthProps extends ComponentPropsWithoutRef<typeof Input> {
   label: string;

@@ -1,4 +1,4 @@
-import { AuthController } from "../controller/AuthController"; // Ajusta la ruta
+import { AuthController } from "./controller/AuthController"; // Ajusta la ruta
 
 export async function POST(req: Request) {
   return AuthController.handleLogin(req);
