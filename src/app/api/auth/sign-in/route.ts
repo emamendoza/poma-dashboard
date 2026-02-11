@@ -1,5 +1,5 @@
-import { signInServerAction } from "@/lib/auth";
 import { NextResponse } from "next/server";
+import { signInServerAction } from "@/auth/lib/auth";
 
 export async function POST(request: Request) {
   try {
