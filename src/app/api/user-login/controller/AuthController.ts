@@ -27,6 +27,7 @@ export class AuthController {
         {
           success: true,
           user: result.user,
+          token: result.token ?? null,
         },
         { status: 200 },
       );

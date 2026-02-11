@@ -1,6 +1,6 @@
-import type { Auth } from "./domain/Auth";
+import type { UserLogin } from "../domain/user-login";
 
-export const AuthList: Array<Auth> = [
+export const AuthList: Array<UserLogin> = [
   { id: 1, username: "mario123", password: "123456" },
   { id: 2, username: "luigi123", password: "123456" },
   { id: 3, username: "yoshi123", password: "123456" },
