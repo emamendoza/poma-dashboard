@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { signOutServerAction } from "@/auth/lib/auth";
+import { signOutServerAction } from "@/auth/lib/better-auth";
 
 export async function POST() {
   try {
