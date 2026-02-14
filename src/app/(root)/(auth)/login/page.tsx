@@ -1,5 +1,5 @@
 import { Poiret_One } from "next/font/google";
-import { LoginFormNew } from "./_components/login-form/loginFormNew";
+import { LoginForm } from "../_components";
 
 // Configuración de la fuente (solo weight 400 disponible)
 const poiretOne = Poiret_One({
@@ -9,12 +9,10 @@ const poiretOne = Poiret_One({
   variable: "--font-poiret-one", // crea variable CSS (opcional pero útil)
 });
 
-//     {<LoginForm />}
-
 export default function AuthPage() {
   return (
     <main className="flex min-h-screen w-full items-center justify-center bg-gradient-to-r from-purple-700 to-blue-600 px-4 py-8 sm:px-6 sm:py-12">
-      <LoginFormNew />
+      <LoginForm />
     </main>
   );
 }

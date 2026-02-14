@@ -2,10 +2,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { type LoginFormValues, loginSchema } from "../loginSchema";
-import { useAuth } from "./useAuth";
+import { useLoginAction } from "./useLoginAction";
 
 export function useLoginForm() {
-  const { login, isLoading, error, clearError } = useAuth();
+  const { performLogin, error, clearError } = useLoginAction();
 
   const {
     register,
@@ -18,15 +18,14 @@ export function useLoginForm() {
 
   const onSubmit = async (data: LoginFormValues) => {
     clearError();
-    return await login(data.username, data.password);
+    return await performLogin(data.username, data.password);
   };
 
   return {
-    register,
-    handleSubmit: handleSubmit(onSubmit), // Esta es la corrección clave
-    errors,
-    isLoading,
-    isSubmitting, // Agregar esta variable
-    error,
+    register, // RETORNAR LA FUNCIÓN DIRECTAMENTE
+    handleSubmit: handleSubmit(onSubmit),
+    errors, // RETORNAR EL OBJETO DE ERRORES
+    error, // Error de la API (Better-Auth)
+    isSubmitting,
   };
 }

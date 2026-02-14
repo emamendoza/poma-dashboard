@@ -1,41 +1,14 @@
 // lib/auth.ts
+/** 
 import { cookies } from "next/headers";
-
-interface AuthParams {
-  username: string;
-  password: string;
-}
-
-interface User {
-  id: string;
-  username: string;
-  name?: string;
-  email?: string;
-}
-
-interface LoginResponse {
-  user: {
-    id: number | string;
-    username: string;
-    name?: string;
-    email?: string;
-  };
-  token: string;
-}
-
-function ensureEnv() {
-  if (!process.env.NEXT_PUBLIC_API_URL) {
-    throw new Error("Missing NEXT_PUBLIC_APP_URL environment variable");
-  }
-}
+import type { AuthParams, LoginResponse, UserAuth } from "@/auth/domain/models";
+import { NEXT_PUBLIC_API_URL } from "@/shared/environment";
 
 const TOKEN_COOKIE = "poma_token";
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 7; // 7 days
 
 export async function signInServerAction({ username, password }: AuthParams) {
-  ensureEnv();
-
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/user-login`;
+  const url = `${NEXT_PUBLIC_API_URL}/api/user-login`;
 
   const res = await fetch(url, {
     method: "POST",
@@ -72,7 +45,7 @@ export async function signOutServerAction() {
   (await cookies()).delete(TOKEN_COOKIE);
 }
 
-function normalizeUser(raw: LoginResponse["user"]): User {
+function normalizeUser(raw: LoginResponse["user"]): UserAuth {
   return {
     id: String(raw.id),
     username: raw.username,
@@ -86,13 +59,11 @@ export async function getTokenFromCookies(): Promise<string | null> {
   return c?.value ?? null;
 }
 
-export async function getCurrentUser(): Promise<User | null> {
-  ensureEnv();
-
+export async function getCurrentUser(): Promise<UserAuth | null> {
   const token = getTokenFromCookies();
   if (!token) return null;
 
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/user-login`;
+  const url = `${NEXT_PUBLIC_API_URL}/api/user-login`;
   const res = await fetch(url, {
     method: "GET",
     headers: { Authorization: `Bearer ${token}` },
@@ -109,8 +80,9 @@ export async function getCurrentUser(): Promise<User | null> {
   return normalizeUser(json.user);
 }
 
-export async function requireUser(): Promise<User> {
+export async function requireUser(): Promise<UserAuth> {
   const user = await getCurrentUser();
   if (!user) throw new Error("Unauthorized");
   return user;
 }
+*/
