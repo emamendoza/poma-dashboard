@@ -1,21 +1,17 @@
-export interface AuthParams {
-  username: string;
-  password: string;
-}
-
 export interface UserAuth {
   id: string;
   username: string;
-  name?: string;
-  email?: string;
+  name: string;
+  email: string;
+  image?: string;
 }
 
-export interface LoginResponse {
-  user: {
-    id: number | string;
-    username: string;
-    name?: string;
-    email?: string;
-  };
+export interface AuthResult {
+  user: UserAuth;
   token: string;
+}
+
+export interface AuthParams {
+  username: string;
+  password: string;
 }

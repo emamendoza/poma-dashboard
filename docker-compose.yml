@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    container_name: mi_app_bun
+    volumes:
+      # Mapeamos la carpeta local ./data a la carpeta /app/data del contenedor
+      - ./data:/app/data
+    environment:
+      # Configuramos la ruta de la base de datos dentro del contenedor
+      - DATABASE_URL=file:/app/data/sqlite.db
+    ports:
+      - "3000:3000"
+
+volumes:
+  data:

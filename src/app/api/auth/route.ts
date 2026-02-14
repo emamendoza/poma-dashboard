@@ -1,3 +1,4 @@
-// biome-ignore assist/source/organizeImports: <explanation>
-import { auth } from "@/auth/lib/better-auth";
 import { toNextJsHandler } from "better-auth/next-js";
+import { authConfig } from "@/auth/lib/better-auth/auth";
+
+export const { POST, GET } = toNextJsHandler(authConfig);

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { signInServerAction } from "@/auth/lib/better-auth";
+import { signInServerAction } from "@/auth/lib/better-auth/index-old";
 
 export async function POST(request: Request) {
   try {
