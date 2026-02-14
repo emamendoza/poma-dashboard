@@ -1,15 +1,28 @@
 services:
-  app:
-    build: .
-    container_name: mi_app_bun
-    volumes:
-      # Mapeamos la carpeta local ./data a la carpeta /app/data del contenedor
-      - ./data:/app/data
+  db:
+    image: postgres:15-alpine
+    container_name: postgres_db
+    restart: always
     environment:
-      # Configuramos la ruta de la base de datos dentro del contenedor
-      - DATABASE_URL=file:/app/data/sqlite.db
+      POSTGRES_USER: user_admin
+      POSTGRES_PASSWORD: secret_password
+      POSTGRES_DB: my_database
     ports:
-      - "3000:3000"
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_panel
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin_password
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
 
 volumes:
-  data:
+  postgres_data:

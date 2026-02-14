@@ -1,22 +1,15 @@
-//import { Pool } from "pg";
-//import { DATABASE_URL } from "@/shared/environment";
-
-import { Database } from "bun:sqlite";
+// src/auth/lib/better-auth/config.ts
 import { betterAuth } from "better-auth";
 import { nextCookies } from "better-auth/next-js";
 import { username } from "better-auth/plugins";
+import { Pool } from "pg";
 
-/**
-export const authConfig = betterAuth({
+const auth = betterAuth({
+  // Cambiado a const
   database: new Pool({
-    connectionString: `postgresql://gmarcs:kiwonfo3uwrcvq55@212.85.17.158:5436/poma`,
+    connectionString:
+      "postgresql://user_admin:secret_password@localhost:5432/my_database",
   }),
-  plugins: [username(), nextCookies()],
-});
-*/
-
-export const authConfig = betterAuth({
-  database: new Database("database.sqlite"),
   emailAndPassword: {
     enabled: true,
   },
@@ -31,3 +24,5 @@ export const authConfig = betterAuth({
   },
   plugins: [username(), nextCookies()],
 });
+
+export default auth; // Exportación por defecto
