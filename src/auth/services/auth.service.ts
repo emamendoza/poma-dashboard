@@ -1,23 +1,31 @@
-import type { RegisterUserDTO } from "../application/register-user";
+// application/services/auth.service.ts
+import type { RegisterUserDTO } from "../application/register-user"; // Tu DTO de registro
 import type { LoginParams } from "../domain/models";
 import type {
   SignInRepository,
+  SignOutRepository,
   SignUpRepository,
 } from "../repository/repository";
 
-// application/services/auth.service.ts
 export class AuthService {
   constructor(
-    private signUpRepository: SignUpRepository,
-    private signInRepository: SignInRepository,
+    private readonly signUpRepository: SignUpRepository,
+    private readonly signInRepository: SignInRepository,
+    private readonly signOutRepository: SignOutRepository,
   ) {}
 
   async register(data: RegisterUserDTO) {
-    // Aquí vive la lógica de orquestación
-    return await this.signUpRepository.SignUp(data);
+    // Orquestación: podrías transformar el DTO antes de enviarlo al repo
+    return await this.signUpRepository.signUp(data);
   }
 
   async login(data: LoginParams) {
-    return await this.signInRepository.SignIn(data);
+    // El repo ya se encarga de identificar si es email o username
+    return await this.signInRepository.signIn(data);
+  }
+
+  async logout() {
+    // Better-Auth limpiará las cookies automáticamente
+    return await this.signOutRepository.signOut();
   }
 }

@@ -40,7 +40,7 @@ export class LoginUserUseCase {
 
     // 2. Llamada al repositorio
     // El caso de uso no sabe si el repo usa Better-Auth, Firebase o una API propia.
-    const response = await this.authRepository.SignIn(params);
+    const response = await this.authRepository.signIn(params);
 
     // 3. Lógica post-login (opcional)
     // Aquí podrías disparar analytics, logs de auditoría o transformar la respuesta.

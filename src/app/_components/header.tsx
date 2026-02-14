@@ -10,7 +10,11 @@ export function Header() {
         </Link>
       </h1>
       <ModeToggle />
-      <Link href="/auth" className="border border-white p-2 rounded">
+      <Link href="/register" className="border border-white p-2 rounded">
+        Registrarse
+      </Link>
+
+      <Link href="/login" className="border border-white p-2 rounded">
         iniciar sesión
       </Link>
     </header>

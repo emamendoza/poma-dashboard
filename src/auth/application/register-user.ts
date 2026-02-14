@@ -22,7 +22,7 @@ export class RegisterUserUseCase {
 
     // 2. Llamamos al repositorio
     // No sabemos si es Better Auth o Firebase, solo que cumple con IAuthRepository
-    const result = await this.signUpRepository.SignUp({
+    const result = await this.signUpRepository.signUp({
       ...data,
       // Pasamos los campos requeridos por la interfaz del repositorio
       email: data.email,

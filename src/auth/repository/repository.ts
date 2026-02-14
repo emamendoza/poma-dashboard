@@ -1,13 +1,17 @@
 import type { AuthParams, LoginParams } from "../domain/models";
 
 export interface SignUpRepository {
-  SignUp(
+  signUp(
     params: AuthParams & { name: string; email: string },
   ): Promise<AuthResponse>;
 }
 
 export interface SignInRepository {
-  SignIn(params: LoginParams): Promise<AuthResponse>;
+  signIn(params: LoginParams): Promise<AuthResponse>;
+}
+
+export interface SignOutRepository {
+  signOut(): Promise<AuthResponse>;
 }
 
 export interface AuthResponse<T = any> {

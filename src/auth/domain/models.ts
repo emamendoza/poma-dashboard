@@ -6,6 +6,12 @@ export interface UserAuth {
   image?: string;
 }
 
+export interface BetterAuthError {
+  message?: string;
+  code?: string;
+  status?: number;
+}
+
 export interface AuthResult {
   user: UserAuth;
   token: string;

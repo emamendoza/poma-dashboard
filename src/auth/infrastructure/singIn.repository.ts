@@ -1,15 +1,9 @@
-import type { LoginParams } from "../domain/models";
+import type { BetterAuthError, LoginParams } from "../domain/models";
 import type { AuthResponse, SignInRepository } from "../repository/repository";
 import { authClient } from "./auth-client";
 
-interface BetterAuthError {
-  message?: string;
-  code?: string;
-  status?: number;
-}
-
 export class SignIn implements SignInRepository {
-  async SignIn(params: LoginParams): Promise<AuthResponse> {
+  async signIn(params: LoginParams): Promise<AuthResponse> {
     try {
       const { identifier, password } = params;
 
