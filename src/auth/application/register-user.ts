@@ -1,5 +1,5 @@
 import type { AuthParams, UserAuth } from "../domain/models";
-import type { AuthResponse, IAuthRepository } from "../repository/repository";
+import type { AuthResponse, SignUpRepository } from "../repository/repository";
 
 // Definimos qué necesita este caso de uso para funcionar
 export interface RegisterUserDTO extends AuthParams {
@@ -9,7 +9,7 @@ export interface RegisterUserDTO extends AuthParams {
 
 export class RegisterUserUseCase {
   // Inyectamos la interfaz del repositorio (Inversión de Dependencia)
-  constructor(private authRepository: IAuthRepository) {}
+  constructor(private signUpRepository: SignUpRepository) {}
 
   async execute(data: RegisterUserDTO): Promise<AuthResponse<UserAuth>> {
     // 1. Aquí podrías añadir lógica de negocio (ej. validar formato de username)
@@ -22,7 +22,7 @@ export class RegisterUserUseCase {
 
     // 2. Llamamos al repositorio
     // No sabemos si es Better Auth o Firebase, solo que cumple con IAuthRepository
-    const result = await this.authRepository.signUp({
+    const result = await this.signUpRepository.SignUp({
       ...data,
       // Pasamos los campos requeridos por la interfaz del repositorio
       email: data.email,

@@ -8,7 +8,8 @@ const auth = betterAuth({
   // Cambiado a const
   database: new Pool({
     connectionString:
-      "postgresql://user_admin:secret_password@localhost:5432/my_database",
+      "postgresql://gmarcs:gmarcs_pass@localhost:5432/my_database",
+    //"postgresql://gmarcs:kiwonfo3uwrcvq55@212.85.17.158:5432/poma",
   }),
   emailAndPassword: {
     enabled: true,

@@ -1,5 +1,5 @@
 import type { AuthParams } from "../domain/models";
-import type { AuthResponse, IAuthRepository } from "../repository/repository";
+import type { AuthResponse, SignUpRepository } from "../repository/repository";
 import { authClient } from "./auth-client";
 
 interface BetterAuthError {
@@ -8,11 +8,8 @@ interface BetterAuthError {
   status?: number;
 }
 
-export class BetterAuthRepository implements IAuthRepository {
-  // Nota: Considera mover esto a tus variables de entorno si cambia en producción
-  private readonly CALLBACK_URL = "http://localhost:3000/";
-
-  async signUp(
+export class SignUp implements SignUpRepository {
+  async SignUp(
     params: AuthParams & { name: string; email: string },
   ): Promise<AuthResponse> {
     try {
@@ -42,6 +39,9 @@ export class BetterAuthRepository implements IAuthRepository {
       };
     }
   }
+
+  // Nota: Considera mover esto a tus variables de entorno si cambia en producción
+  private readonly CALLBACK_URL = "http://localhost:3000/";
 
   private mapError(error: BetterAuthError) {
     return {

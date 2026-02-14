@@ -15,3 +15,8 @@ export interface AuthParams {
   username: string;
   password: string;
 }
+
+export interface LoginParams {
+  identifier: string;
+  password: string;
+}
