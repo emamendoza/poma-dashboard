@@ -4,13 +4,13 @@ services:
     container_name: postgres_db
     restart: always
     environment:
-      POSTGRES_USER: user_admin
-      POSTGRES_PASSWORD: secret_password
+      POSTGRES_USER: gmarcs
+      POSTGRES_PASSWORD: gmarcs_pass
       POSTGRES_DB: my_database
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./postgres_data:/var/lib/postgresql/data
 
   pgadmin:
     image: dpage/pgadmin4
