@@ -1,6 +1,8 @@
 // components/organisms/auth/LoginForm.tsx
 "use client";
 
+import { AlertCircle } from "lucide-react";
+import { Alert, AlertDescription } from "@/ui/components/alert";
 import { Button } from "@/ui/components/button";
 import {
   Card,
@@ -29,11 +31,15 @@ export const LoginForm = () => {
       </CardHeader>
 
       <CardContent className="px-5 sm:px-6 pb-6">
-        {/* Alerta de error proveniente del Repositorio/Better-Auth */}
+        {/* Error del backend (usuario/contraseña incorrectos, etc.) */}
         {error && (
-          <div className="mb-4 p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 text-sm">
-            {error}
-          </div>
+          <Alert
+            variant="destructive"
+            className="mb-4 bg-red-500/20 border-red-500/50 text-red-300 [&>svg]:text-red-300"
+          >
+            <AlertCircle className="h-4 w-4" />
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
@@ -43,7 +49,7 @@ export const LoginForm = () => {
             type="text"
             placeholder="Usuario o Email"
             {...register("username")}
-            error={errors.username?.message}
+            error={errors.username?.message} // Error de Zod
           />
 
           <FormFieldAuth
@@ -52,7 +58,7 @@ export const LoginForm = () => {
             placeholder="*********"
             type="password"
             {...register("password")}
-            error={errors.password?.message}
+            error={errors.password?.message} // Error de Zod
           />
 
           <div className="relative my-5 sm:my-6">

@@ -1,14 +1,20 @@
 import { z } from "zod";
 
-// Definimos el esquema
 export const loginSchema = z.object({
   username: z
     .string()
-    .trim() // Elimina espacios en blanco accidentales
-    .min(3, "El nombre de usuario debe tener al menos 3 caracteres"),
+    .trim()
+    .min(1, "El usuario es requerido") // campo vacío
+    .min(3, "Mínimo 3 caracteres")
+    .max(50, "Máximo 50 caracteres")
+    .regex(/^\S+$/, "El usuario no puede contener espacios"),
 
-  password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
+  password: z
+    .string()
+    .min(1, "La contraseña es requerida") // campo vacío
+    .min(6, "Mínimo 6 caracteres")
+    .max(100, "Máximo 100 caracteres")
+    .regex(/^\S+$/, "La contraseña no puede contener espacios"),
 });
 
-// Exportamos el tipo para usarlo en el componente
 export type LoginFormValues = z.infer<typeof loginSchema>;
