@@ -1,7 +1,5 @@
 import "./_statics/globals.css";
-
 import type { Metadata } from "next";
-import { Header } from "./_components/header";
 import { ThemeProvider } from "./_components/theme-provider";
 import { geistMono, geistSans } from "./_statics/fonts";
 
@@ -24,7 +22,6 @@ export default function RootLayout({ children }: Props) {
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
           {children}
         </ThemeProvider>
       </body>

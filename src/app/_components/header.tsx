@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ModeToggle } from "./mode-toggle";
 
-export function Header() {
+/* export function Header() {
   return (
     <header className="flex justify-around items-center p-6">
       <h1>
@@ -19,4 +19,4 @@ export function Header() {
       </Link>
     </header>
   );
-}
+} */
